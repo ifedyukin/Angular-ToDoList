@@ -1,0 +1,11 @@
+<ul class="list-group items_list">
+    <li ng-class="item.checked ? 'list-group-item checked' : 'list-group-item'" ng-repeat="item in items">
+        <button class="btn check_btn" type="button" ng-click="checkItem(item.id)">
+            <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+        </button>
+        <span>{{item.text}}</span>
+        <button class="btn delete_btn" type="button" ng-click="deleteItem(item.id)">
+            <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+        </button>
+    </li>
+</ul>

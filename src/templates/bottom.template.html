@@ -1,0 +1,22 @@
+<div class="panel-footer">
+    <div class="left_count">
+        <span class="label label-default">{{count()}} item left</span>
+    </div>
+
+    <div class="btn-group" role="group">
+        <button to="/" class="btn btn-primary">All</button>
+        <button to="/active" class="btn btn-default">Active</button>
+        <button to="/completed" class="btn btn-default">Completed</button>
+    </div>
+
+    <div class="clear_completed">
+        <div class="btn-group" role="group">
+            <button type="button" class="btn btn-success" ng-click="checkAll()">
+                <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+            </button>
+            <button type="button" class="btn btn-danger" ng-click="deleteChecked()">
+                <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+            </button>
+        </div>
+    </div>
+</div>
