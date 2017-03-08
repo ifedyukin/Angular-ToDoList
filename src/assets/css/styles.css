@@ -103,20 +103,6 @@ section{
     margin-top: -4px;
 }
 
-.alert{
-    height: 35px;
-    padding-top: 7px;
-    width: 567px;
-    margin-top: -25px;
-    position: absolute;
-    cursor: pointer;
-}
-
-.searchNoResult{
-    text-align: center;
-    margin-top: 10px;
-}
-
 .input-group{
     position: absolute;
     width: 567px;
@@ -161,20 +147,6 @@ section{
         content: "";
         clear: both;
      }
-
-    .alert{
-        width: 92.5%; 
-        bottom: 40px;
-        position: absolute; 
-     }
-     
-    .searchNoResult{
-        font-size: 90%;
-        display: block;
-        width: 92.5%; 
-        float: right;
-        margin-top: 50px 
-    }
 
     .input-group {
         width: auto; 

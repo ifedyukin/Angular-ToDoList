@@ -4,9 +4,9 @@
     </div>
 
     <div class="btn-group" role="group">
-        <button to="/" class="btn btn-primary">All</button>
-        <button to="/active" class="btn btn-default">Active</button>
-        <button to="/completed" class="btn btn-default">Completed</button>
+        <button ng-click="filterSet('all')" ng-class="filterGet() === '' ? 'btn btn-primary' : 'btn btn-default'">All</button>
+        <button ng-click="filterSet('active')" ng-class="filterGet() === false ? 'btn btn-primary' : 'btn btn-default'">Active</button>
+        <button ng-click="filterSet('completed')" ng-class="filterGet() === true ? 'btn btn-primary' : 'btn btn-default'">Completed</button>
     </div>
 
     <div class="clear_completed">

@@ -1,5 +1,6 @@
 <ul class="list-group items_list">
-    <li ng-class="item.checked ? 'list-group-item checked' : 'list-group-item'" ng-repeat="item in items">
+    <li ng-class="item.checked ? 'list-group-item checked' : 'list-group-item'" 
+        ng-repeat="item in items | filter:{'checked': filter()} | filter:{text:searchText()} track by $index">
         <button class="btn check_btn" type="button" ng-click="checkItem(item.id)">
             <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
         </button>
