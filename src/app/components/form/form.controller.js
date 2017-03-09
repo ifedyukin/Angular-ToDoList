@@ -1,12 +1,14 @@
 import isBlank from '../../utils/isBlank';
 
 export default function (todoStorage) {
+    this.store = todoStorage;
+    
     //Add item 
     this.addItem = () => {
         if (isBlank(this.input)) {
-            todoStorage.items.push(new todoStorage.item(this.input, todoStorage.lastId++));
-            todoStorage.setStore(todoStorage.items);
-            todoStorage.search = this.input = "";
+            this.store.items.push(new this.store.item(this.input, this.store.lastId++));
+            this.store.setStore(this.store.items);
+            this.store.search = this.input = "";
         } else {
             window.alert('Empty value!');
         }
@@ -14,6 +16,6 @@ export default function (todoStorage) {
 
     //Search
     this.search = () => {
-        todoStorage.search = this.input;
+        this.store.search = this.input;
     }
 };
