@@ -4,17 +4,17 @@
     </div>
 
     <div class="btn-group" role="group">
-        <button ng-click="filterSet('all')" ng-class="filterGet() === '' ? 'btn btn-primary' : 'btn btn-default'">All</button>
-        <button ng-click="filterSet('active')" ng-class="filterGet() === false ? 'btn btn-primary' : 'btn btn-default'">Active</button>
-        <button ng-click="filterSet('completed')" ng-class="filterGet() === true ? 'btn btn-primary' : 'btn btn-default'">Completed</button>
+        <button ng-click="$ctrl.filterSet('all')" ng-class="$ctrl.filterGet() === '' ? 'btn btn-primary' : 'btn btn-default'">All</button>
+        <button ng-click="$ctrl.filterSet('active')" ng-class="$ctrl.filterGet() === false ? 'btn btn-primary' : 'btn btn-default'">Active</button>
+        <button ng-click="$ctrl.filterSet('completed')" ng-class="$ctrl.filterGet() === true ? 'btn btn-primary' : 'btn btn-default'">Completed</button>
     </div>
 
     <div class="clear_completed">
         <div class="btn-group" role="group">
-            <button type="button" class="btn btn-success" ng-click="checkAll()">
+            <button type="button" class="btn btn-success" ng-click="$ctrl.checkAll()">
                 <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
             </button>
-            <button type="button" class="btn btn-danger" ng-click="deleteChecked()">
+            <button type="button" class="btn btn-danger" ng-click="$ctrl.deleteChecked()">
                 <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
             </button>
         </div>
