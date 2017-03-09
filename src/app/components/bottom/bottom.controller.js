@@ -3,17 +3,7 @@ export default function (todoStorage) {
     this.filter = todoStorage.filter;
 
     //Return left count
-    this.count = () => {
-        let count = 0;
-
-        for (let i = 0; i < this.items.length; i++) {
-            if (!this.items[i].checked) {
-                count++;
-            }
-        }
-
-        return count;
-    }
+    this.count = () => this.items.reduce((count, item) => !item.checked ? ++count : count, 0);
 
     //Check all items
     this.checkAll = () => {
