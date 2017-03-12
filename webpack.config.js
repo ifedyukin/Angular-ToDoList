@@ -10,9 +10,8 @@ var isProd = ENV === 'build';
 module.exports = function () {
   var config = {};
   config.plugins = [];
-
   config.entry = isTest ? void 0 : {
-    app: './src/app/app.js'
+    app: './src/app/app.module.js'
   };
 
   config.output = isTest ? {} : {
@@ -23,10 +22,10 @@ module.exports = function () {
   };
 
   if (isTest) {
-    config.devtool = 'inline-source-map';
+    config.devtool = 'source-map';
   }
   else if (isProd) {
-    config.devtool = 'source-map';
+    config.devtool = 'inline-source-map';
   }
   else {
     config.devtool = 'eval-source-map';

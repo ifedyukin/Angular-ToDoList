@@ -1,9 +1,15 @@
-<form class="input-group" ng-submit="$ctrl.addItem()">
-    <input type="text" class="form-control" autoFocus placeholder="What needs to be done? Search or add..." ng-model="$ctrl.input"
-        ng-change="$ctrl.search()" />
-    <span class="input-group-btn">
+<div class="inputs">
+    <form class="input-group" ng-submit="$ctrl.submitHandle()">
+        <input type="text" class="form-control" autoFocus placeholder="What needs to be done?" ng-model="$ctrl.addText" required/>
+        <span class="input-group-btn">
         <button class="btn btn-primary" type="submit">
             <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
-    </button>
-    </span>
-</form>
+        </button>
+        </span>
+    </form>
+
+    <div class="input-group search-group">
+        <span class="input-group-addon" id="basic-addon1"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></span>
+        <input type="text" class="form-control" placeholder="Search..." ng-model="$ctrl.searchText" ng-change="$ctrl.searchHandle()" />
+    </div>
+</div>

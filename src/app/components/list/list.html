@@ -1,11 +1,14 @@
 <ul class="list-group items_list">
     <li ng-class="item.checked ? 'list-group-item checked' : 'list-group-item'" 
-        ng-repeat="item in $ctrl.items | filter:{'checked': $ctrl.filter()} | filter:{text: $ctrl.searchText()} track by $index">
+        ng-repeat="item in $ctrl.items 
+                    | filter:{'checked': $ctrl.filter} 
+                    | filter:{text: $ctrl.search} 
+                    track by $index">
         <button class="btn check_btn" type="button" ng-click="$ctrl.checkItem(item.id)">
             <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
         </button>
         <span>{{item.text}}</span>
-        <button class="btn delete_btn" type="button" ng-click="$ctrl.deleteItem(item.id)">
+        <button class="btn delete_btn" type="button" ng-click="$ctrl.removeItem(item.id)">
             <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
         </button>
     </li>

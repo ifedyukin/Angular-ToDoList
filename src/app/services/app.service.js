@@ -1,33 +1,37 @@
-import { storeGet, storeSave } from '../utils/storage';
+import { getLocalStorage, setLocalStorage } from '../utils/localStorage';
+import randomId from '../utils/idGenerator';
 
-export default function todoStorage() {
-    //Item constructor
-    function item(text, id) {
-        this.id = id;
-        this.text = text;
-        this.checked = false;
+export default class todoStorage {
+    constructor($rootScope) {
+        this.items = getLocalStorage();
+
+        $rootScope.$watchCollection(() => this.items,
+            (newData, oldData) => {
+                setLocalStorage(this.items);
+            });
     }
 
-    let items = [];
-
-    //Save items to the local storage
-    let setStore = (set) => {
-        storeSave(set);
-        getStore();
+    addItem(text) {
+        this.items.push({
+            id: randomId(),
+            text,
+            checked: false
+        });
     }
 
-    //Get items from the local storage
-    let getStore = () => {
-        items = storeGet();
-        items = items === null ? [] : items;
+    removeItem(id) {
+        this.items = this.items.filter(item => (item.id != id));
     }
-    getStore();
 
-    return {
-        item,
-        items, setStore,
-        lastId: items.length > 0 ? items[items.length - 1].id + 1 : 1,
-        search: '',
-        filter: ''
+    checkItem(id) {
+        this.items = this.items.map(item => item.id === id ? { ...item, checked: !item.checked } : item);
+    }
+
+    removeCompleted() {
+        this.items = this.items.filter(item => !item.checked);
+    }
+
+    checkAll() {
+        this.items = this.items.map(item => item = { ...item, checked: true });
     }
 };

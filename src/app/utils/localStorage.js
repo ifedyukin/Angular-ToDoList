@@ -1,7 +1,7 @@
-export function storeGet() {
+export function getLocalStorage() {
     return JSON.parse(localStorage.getItem("Items"));
 }
 
-export function storeSave(items) {
+export function setLocalStorage(items) {
     localStorage.setItem("Items", JSON.stringify(items));
 }

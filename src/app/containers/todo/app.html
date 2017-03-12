@@ -1,10 +1,25 @@
 <section>
     <h1>ToDo List</h1>
-    <todo-form></todo-form>
+    <todo-form 
+        on-submit="$ctrl.addItem($text)" 
+        on-search='$ctrl.searchItem($text)'>
+    </todo-form>
     <div class="panel panel-default">
         <div class="panel-body">
-            <todo-list></todo-list>
+            <todo-list 
+                on-remove="$ctrl.removeItem($id)" 
+                on-check="$ctrl.checkItem($id)" 
+                items="$ctrl.items" 
+                search="$ctrl.search" 
+                filter="$ctrl.filter">
+            </todo-list>
         </div>
-        <todo-bottom></todo-bottom>
+        <todo-bottom 
+            left-count="$ctrl.leftCount" 
+            filter="$ctrl.filter" 
+            on-remove-completed="$ctrl.removeCompleted()"
+            on-check-all="$ctrl.checkAll()"
+            on-set-filter="$ctrl.setFilter($filter)">
+        </todo-bottom>
     </div>
 </section>

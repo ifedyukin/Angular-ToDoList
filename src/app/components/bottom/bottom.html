@@ -1,12 +1,15 @@
 <div class="panel-footer">
     <div class="left_count">
-        <span class="label label-default">{{$ctrl.count()}} item left</span>
+        <span class="label label-default">{{$ctrl.leftCount}} item left</span>
     </div>
 
     <div class="btn-group" role="group">
-        <button ng-click="$ctrl.filterSet('all')" ng-class="$ctrl.filterGet() === '' ? 'btn btn-primary' : 'btn btn-default'">All</button>
-        <button ng-click="$ctrl.filterSet('active')" ng-class="$ctrl.filterGet() === false ? 'btn btn-primary' : 'btn btn-default'">Active</button>
-        <button ng-click="$ctrl.filterSet('completed')" ng-class="$ctrl.filterGet() === true ? 'btn btn-primary' : 'btn btn-default'">Completed</button>
+        <a href="#/" 
+            ng-class="$ctrl.filter === '' ? 'btn btn-primary' : 'btn btn-default'">All</a>
+        <a href="#/active" 
+            ng-class="$ctrl.filter === false ? 'btn btn-primary' : 'btn btn-default'">Active</a>
+        <a href="#/completed"
+            ng-class="$ctrl.filter === true ? 'btn btn-primary' : 'btn btn-default'">Completed</a>
     </div>
 
     <div class="clear_completed">
@@ -14,7 +17,7 @@
             <button type="button" class="btn btn-success" ng-click="$ctrl.checkAll()">
                 <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
             </button>
-            <button type="button" class="btn btn-danger" ng-click="$ctrl.deleteChecked()">
+            <button type="button" class="btn btn-danger" ng-click="$ctrl.removeCompleted()">
                 <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
             </button>
         </div>
