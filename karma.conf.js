@@ -14,9 +14,12 @@ module.exports = function (config) {
 
 
     plugins: [
-      require('karma-babel-preprocessor'),
       'karma-jasmine',
-      'karma-chrome-launcher'
+      'karma-webpack',
+      'karma-chrome-launcher',
+      'karma-sourcemap-loader',
+      'karma-babel-preprocessor',
+      'karma-spec-reporter'
     ],
 
     // list of files / patterns to load in the browser
@@ -37,8 +40,7 @@ module.exports = function (config) {
     // preprocess matching files before serving them to the browser
     // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
     preprocessors: {
-      'src/**/*.js': ['babel'],
-      'test/**/*.js': ['babel']
+      'src/**/!(*.spec|*.mock|*-mock|*.e2e|*.po|*.test).js': ['webpack', 'sourcemap']
     },
 
     // Babel preprocessor specific configuration
@@ -46,12 +48,6 @@ module.exports = function (config) {
       options: {
         presets: ['es2015'], // use the es2015 preset
         sourceMap: 'inline' // inline source maps inside compiled files
-      },
-      filename: function (file) {
-        return file.originalPath.replace(/\.js$/, '.es5.js');
-      },
-      sourceFileName: function (file) {
-        return file.originalPath;
       }
     },
 
@@ -59,7 +55,7 @@ module.exports = function (config) {
     // test results reporter to use
     // possible values: 'dots', 'progress'
     // available reporters: https://npmjs.org/browse/keyword/karma-reporter
-    reporters: ['progress'],
+    reporters: ['spec'],
 
 
     // web server port
@@ -90,6 +86,11 @@ module.exports = function (config) {
 
     // Concurrency level
     // how many browser should be started simultaneous
-    concurrency: Infinity
+    concurrency: Infinity,
+
+    webpack: require('./webpack.config'),
+    webpackMiddleware: {
+      noInfo: true
+    }
   })
 }
