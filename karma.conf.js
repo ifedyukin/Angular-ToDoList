@@ -27,8 +27,7 @@ module.exports = function (config) {
       './node_modules/angular/angular.js',
       './node_modules/angular-route/angular-route.js',
       './node_modules/angular-mocks/angular-mocks.js',
-      './src/app/services/app.service.js',
-      './src/app/app.spec.js'
+      './src/app/**/*.js'
     ],
 
 
