@@ -1,10 +1,9 @@
-import { getLocalStorage, setLocalStorage } from '../utils/localStorage';
 import shortid from 'shortid';
 
 export default class todoStorage {
-    constructor($rootScope, $q) {
+    constructor($q) {
         $q((resolve) => {
-            let items = getLocalStorage();
+            let items = this.getLocalStorage();
             if (items !== null) {
                 resolve(items);
             } else {
@@ -15,6 +14,14 @@ export default class todoStorage {
             .catch(error => console.error(error));
     }
 
+    getLocalStorage() {
+        return JSON.parse(localStorage.getItem("Items"));
+    }
+
+    setLocalStorage() {
+        localStorage.setItem("Items", JSON.stringify(this.items));
+    }
+
     addItem(text) {
         if (text != undefined && text.trim().length) {
             this.items = this.items.concat({
@@ -22,27 +29,27 @@ export default class todoStorage {
                 text,
                 checked: false
             });
-            setLocalStorage(this.items);
+            this.setLocalStorage();
         }
     }
 
     removeItem(id) {
         this.items = this.items.filter(item => (item.id != id));
-        setLocalStorage(this.items);
+        this.setLocalStorage();
     }
 
     toggleItem(id) {
-        this.items = this.items.map(item => item.id === id ? { ...item, checked: !item.checked } : item);
-        setLocalStorage(this.items);
+        this.items = this.items.map(item => item.id === id ? {...item, checked: !item.checked} : item);
+        this.setLocalStorage();
     }
 
     removeCompleted() {
         this.items = this.items.filter(item => !item.checked);
-        setLocalStorage(this.items);
+        this.setLocalStorage();
     }
 
     checkAll() {
-        this.items = this.items.map(item => item = { ...item, checked: true });
-        setLocalStorage(this.items);
+        this.items = this.items.map(item => item = {...item, checked: true});
+        this.setLocalStorage();
     }
 };

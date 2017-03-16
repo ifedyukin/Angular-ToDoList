@@ -102,4 +102,6 @@ describe('todo service', () => {
             expect(todoStorage.items[0].checked).toBe(true);
         });
     });
+
+    //TODO: Test $q
 });

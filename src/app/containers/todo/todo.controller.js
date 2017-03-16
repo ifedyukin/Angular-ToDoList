@@ -4,8 +4,9 @@ export default class todoApp {
         this.search = '';
         this.setFilter($routeParams.filter);
 
-        $scope.$watchCollection(() => this.service.items,
-            (newData) => this.leftCount = newData.filter(item => !item.checked).length);
+        $scope.$watch(() => this.service.items,
+            (newData) => this.leftCount = newData.filter(item => !item.checked).length
+            , true);
     }
 
     searchItem(text) {
