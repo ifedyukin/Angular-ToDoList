@@ -3,7 +3,7 @@ export default class todoList {
         this.onRemove({ $id: id });
     }
 
-    checkItem(id) {
-        this.onCheck({ $id: id });
+    toggleItem(id) {
+        this.onToggle({ $id: id });
     }
 };

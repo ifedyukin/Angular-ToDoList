@@ -3,7 +3,7 @@ import controller from './list.controller';
 
 const todoList = {
     bindings: {
-        onCheck: '&',
+        onToggle: '&',
         onRemove: '&',
         items: '=',
         filter: '=',

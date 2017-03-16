@@ -4,7 +4,7 @@
                     | filter:{'checked': $ctrl.filter} 
                     | filter:{text: $ctrl.search} 
                     track by $index">
-        <button class="btn check_btn" type="button" ng-click="$ctrl.checkItem(item.id)">
+        <button class="btn check_btn" type="button" ng-click="$ctrl.toggleItem(item.id)">
             <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
         </button>
         <span>{{item.text}}</span>

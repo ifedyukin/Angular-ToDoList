@@ -11,7 +11,7 @@ module.exports = function () {
   var config = {};
   config.plugins = [];
   config.entry = isTest ? void 0 : {
-    app: './src/app/app.module.js'
+    app: './src/app/todo.module.js'
   };
 
   config.output = isTest ? {} : {
