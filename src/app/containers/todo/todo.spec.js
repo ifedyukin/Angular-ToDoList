@@ -1,54 +1,54 @@
-describe('todo controller', () => {
-    let controller;
+describe('todo controller', function () {
+    var controller;
 
     beforeEach(angular.mock.module('ToDoList'));
 
-    beforeEach(inject((_$componentController_) => {
+    beforeEach(inject(function (_$componentController_) {
         controller = _$componentController_('todoApp', null, null);
     }));
 
-    it('should exist', () => {
+    it('should exist', function () {
         expect(controller.search).toBe('');
         expect(typeof (controller.searchItem)).toBe('function');
         expect(typeof (controller.setFilter)).toBe('function');
         expect(typeof (controller.filter)).toBeDefined();
     });
 
-    describe('#method searchItem()', () => {
+    describe('#method searchItem()', function () {
 
-        beforeEach(() => {
+        beforeEach(function () {
             controller.search = '';
         });
 
-        it('should search item', () => {
-            let testSearch = 'test item';
+        it('should search item', function () {
+            var testSearch = 'test item';
 
             controller.searchItem(testSearch);
             expect(controller.search).toBe(testSearch);
         });
     });
 
-    describe('#method setFilter()', () => {
-        beforeEach(inject(_$routeParams_ => {
+    describe('#method setFilter()', function () {
+        beforeEach(inject(function (_$routeParams_) {
             $routeParams = _$routeParams_;
             $routeParams.filter = 'test filter';
         }));
 
-        it('should call the "#setFilter"', () => {
+        it('should call the "#setFilter"', function () {
             controller.setFilter($routeParams.filter);
             expect(controller.filter).toBe('');
         });
     });
 
-    describe('$watch service.items', () => {
-        beforeEach(inject((_$rootScope_) => {
+    describe('$watch service.items', function () {
+        beforeEach(inject(function (_$rootScope_) {
             $scope = _$rootScope_;
         }));
 
-        it('should update "leftCount" via $watch', () => {
-            controller.service.items = [{checked: true}, {checked: false}];
+        it('should update "leftCount" via $watch', function () {
+            controller.service.items = [{ checked: true }, { checked: false }];
             $scope.$digest();
-            controller.service.items = [{checked: false}, {checked: false}];
+            controller.service.items = [{ checked: false }, { checked: false }];
             $scope.$digest();
             expect(controller.leftCount).toBe(2);
         });

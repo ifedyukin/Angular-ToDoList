@@ -1,13 +1,13 @@
 import template from './form.html';
 import controller from './form.controller';
 
-const todoForm = {
+var todoForm = {
     bindings: {
         onSubmit: '&',
         onSearch: '&'
     },
-    template,
-    controller
+    template: template,
+    controller: controller
 };
 
 export default todoForm;

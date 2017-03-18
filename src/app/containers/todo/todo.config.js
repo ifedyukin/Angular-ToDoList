@@ -1,4 +1,4 @@
-const todoConfig = ($routeProvider, $locationProvider) => {
+var todoConfig = function todoConfig($routeProvider, $locationProvider) {
     $routeProvider.
         when('/', {
             template: '<todo-app>Angular load...</todo-app>'

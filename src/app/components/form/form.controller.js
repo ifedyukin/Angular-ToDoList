@@ -1,10 +1,12 @@
-export default class todoForm {
-    submitHandle() {
-        this.onSubmit({$text: this.addText});
+var todoForm = function todoForm() {
+    this.submitHandle = function () {
+        this.onSubmit({ $text: this.addText });
         this.addText = '';
     }
 
-    searchHandle() {
-        this.onSearch({$text: this.searchText});
+    this.searchHandle = function () {
+        this.onSearch({ $text: this.searchText });
     }
-};
+}
+
+export default todoForm;

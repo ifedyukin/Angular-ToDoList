@@ -1,9 +1,11 @@
-export default class todoList {
-    removeItem(id) {
+var todoList = function todoList() {
+    this.removeItem = function (id) {
         this.onRemove({ $id: id });
     }
 
-    toggleItem(id) {
+    this.toggleItem = function (id) {
         this.onToggle({ $id: id });
     }
-};
+}
+
+export default todoList;

@@ -1,7 +1,7 @@
 import template from './bottom.html';
 import controller from './bottom.controller';
 
-const todoBottom = {
+var todoBottom = {
     bindings: {
         leftCount: '=',
         filter: '=',
@@ -9,8 +9,8 @@ const todoBottom = {
         onCheckAll: '&',
         onRemoveCompleted: '&'
     },
-    template,
-    controller
+    template: template,
+    controller: controller
 };
 
 export default todoBottom;

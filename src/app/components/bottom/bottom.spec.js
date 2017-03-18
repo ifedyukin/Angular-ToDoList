@@ -1,43 +1,43 @@
-describe('bottom controller', () => {
+describe('bottom controller', function () {
     beforeEach(angular.mock.module('ToDoList'));
 
-    beforeEach(inject(_$componentController_ => {
+    beforeEach(inject(function (_$componentController_) {
         $componentController = _$componentController_;
     }));
 
-    it('should bind leftCount and filter "todoApp"', () => {
-        const bindings = {
+    it('should bind leftCount and filter "todoApp"', function () {
+        var bindings = {
             leftCount: 1,
             filter: true
         };
-        const controller = $componentController('todoBottom', null, bindings);
+        var controller = $componentController('todoBottom', null, bindings);
         expect(controller.leftCount).toEqual(bindings.leftCount);
         expect(controller.filter).toEqual(bindings.filter);
     });
 
-    it('should call the "#onSetFilter" binding', () => {
-        const onSetFilter = jasmine.createSpy('onSetFilter');
-        const bindings = {onSetFilter};
-        const controller = $componentController('todoBottom', null, bindings);
+    it('should call the "#onSetFilter" binding', function () {
+        var onSetFilter = jasmine.createSpy('onSetFilter');
+        var bindings = { onSetFilter };
+        var controller = $componentController('todoBottom', null, bindings);
         let filter = 'filter';
         controller.setFilter(filter);
 
-        expect(onSetFilter).toHaveBeenCalledWith({$filter: filter});
+        expect(onSetFilter).toHaveBeenCalledWith({ $filter: filter });
     });
 
-    it('should call the "#onCheckAll" binding', () => {
-        const onCheckAll = jasmine.createSpy('onCheckAll');
-        const bindings = {onCheckAll};
-        const controller = $componentController('todoBottom', null, bindings);
+    it('should call the "#onCheckAll" binding', function () {
+        var onCheckAll = jasmine.createSpy('onCheckAll');
+        var bindings = { onCheckAll };
+        var controller = $componentController('todoBottom', null, bindings);
         controller.checkAll();
 
         expect(onCheckAll).toHaveBeenCalled();
     });
 
-    it('should call the "#onRemoveCompleted" binding', () => {
-        const onRemoveCompleted = jasmine.createSpy('onRemoveCompleted');
-        const bindings = {onRemoveCompleted};
-        const controller = $componentController('todoBottom', null, bindings);
+    it('should call the "#onRemoveCompleted" binding', function () {
+        var onRemoveCompleted = jasmine.createSpy('onRemoveCompleted');
+        var bindings = { onRemoveCompleted };
+        var controller = $componentController('todoBottom', null, bindings);
         controller.removeCompleted();
 
         expect(onRemoveCompleted).toHaveBeenCalled();

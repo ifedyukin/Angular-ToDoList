@@ -1,14 +1,14 @@
-describe('todo service', () => {
-    let todoStorage;
+describe('todo service', function () {
+    var todoStorage;
 
     beforeEach(angular.mock.module('ToDoList'));
 
-    beforeEach(inject((_todoStorage_) => {
+    beforeEach(inject(function (_todoStorage_) {
         todoStorage = _todoStorage_;
         todoStorage.items = [];
     }));
 
-    it('should exist', () => {
+    it('should exist', function () {
         expect(todoStorage).toBeDefined();
         expect(typeof (todoStorage.addItem)).toBe('function');
         expect(typeof (todoStorage.removeItem)).toBe('function');
@@ -17,87 +17,87 @@ describe('todo service', () => {
         expect(typeof (todoStorage.checkAll)).toBe('function');
     });
 
-    describe('#method addItem()', () => {
+    describe('#method addItem()', function () {
 
-        beforeEach(() => {
+        beforeEach(function () {
             todoStorage.items = [];
         });
 
-        it('should add new item', () => {
+        it('should add new item', function () {
             todoStorage.addItem("Test item");
             expect(todoStorage.items[0].checked).toBe(false);
             expect(todoStorage.items[0].text).toBe("Test item");
         });
 
-        it('should add empty item', () => {
+        it('should add empty item', function () {
             todoStorage.addItem();
             expect(todoStorage.items.length).toBe(0);
         });
     });
 
-    describe('#method removeItem()', () => {
-        let items = [{id: '1'}, {id: '2'}];
+    describe('#method removeItem()', function () {
+        var items = [{ id: '1' }, { id: '2' }];
 
-        beforeEach(() => {
+        beforeEach(function () {
             todoStorage.items = items;
         });
 
-        it('should remove item', () => {
+        it('should remove item', function () {
             todoStorage.removeItem('1');
             expect(todoStorage.items[0].id).toBe('2');
         });
 
-        it('should remove null item', () => {
+        it('should remove null item', function () {
             todoStorage.removeItem('0');
             expect(todoStorage.items).toEqual(items);
         });
     });
 
-    describe('#method toggleItem()', () => {
-        let items = [{id: '1', checked: true}, {id: '2', checked: false}];
+    describe('#method toggleItem()', function () {
+        var items = [{ id: '1', checked: true }, { id: '2', checked: false }];
 
-        beforeEach(() => {
+        beforeEach(function () {
             todoStorage.items = items;
         });
 
-        it('should check item', () => {
+        it('should check item', function () {
             todoStorage.toggleItem('2');
             expect(todoStorage.items[0].checked).toBe(true);
         });
 
-        it('should uncheck item', () => {
+        it('should uncheck item', function () {
             todoStorage.toggleItem('1');
             expect(todoStorage.items[0].checked).toBe(false);
         });
 
-        it('should toggle null item', () => {
+        it('should toggle null item', function () {
             todoStorage.toggleItem('0');
             expect(todoStorage.items).toEqual(items);
         });
     });
 
-    describe('#method removeCompleted()', () => {
-        let items = [{checked: true}, {checked: true}, {checked: false}];
+    describe('#method removeCompleted()', function () {
+        var items = [{ checked: true }, { checked: true }, { checked: false }];
 
-        beforeEach(() => {
+        beforeEach(function () {
             todoStorage.items = items;
         });
 
-        it('should remove completed items', () => {
+        it('should remove completed items', function () {
             todoStorage.removeCompleted();
             expect(todoStorage.items.length).toBe(1);
             expect(todoStorage.items[0].checked).toBe(false);
         });
     });
 
-    describe('#method checkAll()', () => {
-        let items = [{checked: false}];
+    describe('#method checkAll()', function () {
+        var items = [{ checked: false }];
 
-        beforeEach(() => {
+        beforeEach(function () {
             todoStorage.items = items;
         });
 
-        it('should check all items', () => {
+        it('should check all items', function () {
             todoStorage.checkAll();
             expect(todoStorage.items[0].checked).toBe(true);
         });

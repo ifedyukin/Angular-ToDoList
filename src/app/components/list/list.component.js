@@ -1,7 +1,7 @@
 import template from './list.html';
 import controller from './list.controller';
 
-const todoList = {
+var todoList = {
     bindings: {
         onToggle: '&',
         onRemove: '&',
@@ -9,8 +9,8 @@ const todoList = {
         filter: '=',
         search: '='
     },
-    template,
-    controller
+    template: template,
+    controller: controller
 };
 
 export default todoList;

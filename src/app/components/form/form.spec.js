@@ -1,26 +1,26 @@
-describe('form controller', () => {
+describe('form controller', function () {
     beforeEach(angular.mock.module('ToDoList'));
 
-    beforeEach(inject(_$componentController_ => {
+    beforeEach(inject(function (_$componentController_) {
         $componentController = _$componentController_;
     }));
 
-    it('should call the "#onSubmit" binding', () => {
-        const onSubmit = jasmine.createSpy('onSubmit');
-        const bindings = {onSubmit};
-        const controller = $componentController('todoForm', null, bindings);
-        const addText = 'test submit form';
+    it('should call the "#onSubmit" binding', function () {
+        var onSubmit = jasmine.createSpy('onSubmit');
+        var bindings = { onSubmit };
+        var controller = $componentController('todoForm', null, bindings);
+        var addText = 'test submit form';
         controller.addText = addText;
         controller.submitHandle();
 
-        expect(onSubmit).toHaveBeenCalledWith({$text: addText});
+        expect(onSubmit).toHaveBeenCalledWith({ $text: addText });
         expect(controller.addText).toBe('');
     });
 
-    it('should call the "#onSearch" binding', () => {
-        const onSearch = jasmine.createSpy('onSubmit');
-        const bindings = {onSearch};
-        const controller = $componentController('todoForm', null, bindings);
+    it('should call the "#onSearch" binding', function () {
+        var onSearch = jasmine.createSpy('onSubmit');
+        var bindings = { onSearch };
+        var controller = $componentController('todoForm', null, bindings);
         controller.searchHandle();
 
         expect(onSearch).toHaveBeenCalled();

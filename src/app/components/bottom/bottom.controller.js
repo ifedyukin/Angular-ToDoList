@@ -1,13 +1,15 @@
-export default class todoBottom {
-    removeCompleted() {
+var todoBottom = function todoBottom() {
+    this.removeCompleted = function () {
         this.onRemoveCompleted();
     }
 
-    checkAll() {
+    this.checkAll = function () {
         this.onCheckAll();
     }
 
-    setFilter(filter) {
+    this.setFilter = function (filter) {
         this.onSetFilter({ $filter: filter });
     }
-};
+}
+
+export default todoBottom;
