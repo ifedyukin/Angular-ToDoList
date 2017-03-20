@@ -17,6 +17,21 @@ describe('todo service', function () {
         expect(typeof (todoStorage.checkAll)).toBe('function');
     });
 
+    describe('$q promise', function () {
+        var items = [];
+
+        beforeEach(inject(function (_todoStorage_, _$rootScope_) {
+            todoStorage = _todoStorage_;
+            spyOn(todoStorage, 'getLocalStorage').and.returnValue(items);
+            $scope = _$rootScope_;
+        }));
+
+        it('should return items-array', function () {
+            $scope.$apply();
+            expect(todoStorage.items).toEqual(items);
+        });
+    });
+
     describe('#method addItem()', function () {
 
         beforeEach(function () {
@@ -103,5 +118,4 @@ describe('todo service', function () {
         });
     });
 
-    //TODO: Test $q
 });
