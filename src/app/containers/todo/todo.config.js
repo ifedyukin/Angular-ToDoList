@@ -1,4 +1,4 @@
-var todoConfig = function todoConfig($routeProvider, $locationProvider) {
+module.exports = function todoConfig($routeProvider, $locationProvider) {
     $routeProvider.
         when('/', {
             template: '<todo-app>Angular load...</todo-app>'
@@ -8,5 +8,3 @@ var todoConfig = function todoConfig($routeProvider, $locationProvider) {
         }).
         otherwise('/');
 }
-
-export default todoConfig;

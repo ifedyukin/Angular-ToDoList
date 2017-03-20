@@ -1,4 +1,3 @@
-import template from './bottom.html';
 import controller from './bottom.controller';
 
 var todoBottom = {
@@ -9,7 +8,7 @@ var todoBottom = {
         onCheckAll: '&',
         onRemoveCompleted: '&'
     },
-    template: template,
+    template: require('./bottom.html'),
     controller: controller
 };
 

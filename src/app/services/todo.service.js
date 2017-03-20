@@ -1,4 +1,4 @@
-import shortid from 'shortid';
+var shortid = require('shortid');
 
 var todoStorage = function todoStorage($q) {
     var self = this;
@@ -65,4 +65,4 @@ todoStorage.prototype.checkAll = function checkAll() {
     this.setLocalStorage();
 }
 
-export default todoStorage;
+module.exports = todoStorage;
