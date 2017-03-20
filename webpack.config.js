@@ -8,72 +8,72 @@ var isTest = ENV === 'test' || ENV === 'test-watch';
 var isProd = ENV === 'build';
 
 module.exports = function () {
-  var config = {};
-  config.plugins = [];
-  config.entry = isTest ? void 0 : {
-    app: './src/app/todo.module.js'
-  };
+    var config = {};
+    config.plugins = [];
+    config.entry = isTest ? void 0 : {
+        app: './src/app/todo.module.js'
+    };
 
-  config.output = isTest ? {} : {
-    path: __dirname + '/dist',
-    publicPath: isProd ? '/' : 'http://localhost:8080/',
-    filename: isProd ? '[name].[hash].js' : '[name].bundle.js',
-    chunkFilename: isProd ? '[name].[hash].js' : '[name].bundle.js'
-  };
+    config.output = isTest ? {} : {
+        path: __dirname + '/dist',
+        publicPath: isProd ? '/' : 'http://localhost:8080/',
+        filename: isProd ? '[name].[hash].js' : '[name].bundle.js',
+        chunkFilename: isProd ? '[name].[hash].js' : '[name].bundle.js'
+    };
 
-  if (isTest) {
-    config.devtool = 'source-map';
-  }
-  else if (isProd) {
-    config.devtool = 'inline-source-map';
-  }
-  else {
-    config.devtool = 'eval-source-map';
-  }
+    if (isTest) {
+        config.devtool = 'source-map';
+    }
+    else if (isProd) {
+        config.devtool = 'inline-source-map';
+    }
+    else {
+        config.devtool = 'eval-source-map';
+    }
 
-  config.module = {
-    rules: [{
-      test: /\.js$/,
-      loader: 'babel-loader',
-      exclude: /node_modules/
-    }, {
-      test: /\.css$/,
-      loader: 'style-loader!css-loader',
-      exclude: /node_modules/,
-      include: /assets/
-    }, {
-      test: /\.(png|ico|jpg|jpeg|gif|svg|woff|woff2|ttf|eot)$/,
-      loader: 'file-loader',
-      exclude: /node_modules/,
-      include: /assets/
-    },
-    {
-      test: /\.html$/,
-      loader: 'raw-loader',
-      include: /app/
-    }]
-  };
+    config.module = {
+        rules: [{
+            test: /\.js$/,
+            loader: 'babel-loader',
+            exclude: /node_modules/
+        }, {
+            test: /\.css$/,
+            loader: 'style-loader!css-loader',
+            exclude: /node_modules/,
+            include: /assets/
+        }, {
+            test: /\.(png|ico|jpg|jpeg|gif|svg|woff|woff2|ttf|eot)$/,
+            loader: 'file-loader',
+            exclude: /node_modules/,
+            include: /assets/
+        },
+            {
+                test: /\.html$/,
+                loader: 'raw-loader',
+                include: /app/
+            }]
+    };
 
-  if (!isTest) {
-    config.plugins.push(
-      new HtmlWebpackPlugin({
-        template: './src/index.html',
-        inject: 'body'
-      })
-    )
-  }
+    if (!isTest) {
+        config.plugins.push(
+            new HtmlWebpackPlugin({
+                template: './src/index.html',
+                inject: 'body'
+            })
+        )
+    }
 
-  if (isProd) {
-    config.plugins.push(
-      new webpack.NoErrorsPlugin(),
-      new webpack.optimize.UglifyJsPlugin()
-    )
-  }
+    if (isProd) {
+        config.plugins.push(
+            new webpack.NoErrorsPlugin(),
+            new webpack.optimize.UglifyJsPlugin()
+        )
+    }
 
-  config.devServer = {
-    contentBase: './src/assets',
-    stats: 'minimal'
-  };
+    config.devServer = {
+        contentBase: './src/assets',
+        stats: 'minimal'
+    };
 
-  return config;
+    return config;
 }();

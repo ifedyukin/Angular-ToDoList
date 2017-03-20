@@ -1,15 +1,27 @@
-import controller from './bottom.controller';
+define(['./bottom.html'], function (template) {
+    'use strict';
 
-var todoBottom = {
-    bindings: {
-        leftCount: '=',
-        filter: '=',
-        onSetFilter: '&',
-        onCheckAll: '&',
-        onRemoveCompleted: '&'
-    },
-    template: require('./bottom.html'),
-    controller: controller
-};
+    return {
+        bindings: {
+            leftCount: '=',
+            filter: '=',
+            onSetFilter: '&',
+            onCheckAll: '&',
+            onRemoveCompleted: '&'
+        },
+        template: template,
+        controller: function todoBottomController() {
+            this.removeCompleted = function () {
+                this.onRemoveCompleted();
+            }
 
-export default todoBottom;
+            this.checkAll = function () {
+                this.onCheckAll();
+            }
+
+            this.setFilter = function (filter) {
+                this.onSetFilter({ $filter: filter });
+            }
+        }
+    };
+});

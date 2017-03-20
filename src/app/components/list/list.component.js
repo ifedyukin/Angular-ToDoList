@@ -1,16 +1,23 @@
-import template from './list.html';
-import controller from './list.controller';
+define(['./list.html'], function (template) {
+    'use strict';
 
-var todoList = {
-    bindings: {
-        onToggle: '&',
-        onRemove: '&',
-        items: '=',
-        filter: '=',
-        search: '='
-    },
-    template: template,
-    controller: controller
-};
+    return {
+        bindings: {
+            onToggle: '&',
+            onRemove: '&',
+            items: '=',
+            filter: '=',
+            search: '='
+        },
+        template: template,
+        controller: function todoListController() {
+            this.removeItem = function (id) {
+                this.onRemove({ $id: id });
+            }
 
-export default todoList;
+            this.toggleItem = function (id) {
+                this.onToggle({ $id: id });
+            }
+        }
+    };
+});

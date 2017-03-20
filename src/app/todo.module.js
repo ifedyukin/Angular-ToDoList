@@ -1,22 +1,30 @@
-import angular from 'angular';
-import 'angular-route';
+require('angular');
+require('angular-route');
 
-import '../assets/css/bootstrap.min.css';
-import '../assets/css/styles.css';
+require('../assets/css/bootstrap.min.css');
+require('../assets/css/styles.css');
 
-var todoApp = require('./containers/todo/todo.component.js');
-var todoConfig = require('./containers/todo/todo.config');
-var todoStorage = require('./services/todo.service');
+define([
+    './containers/todo/todo.component.js',
+    './containers/todo/todo.config',
+    './services/todo.service',
+    './components/bottom/bottom.component.js',
+    './components/form/form.component.js',
+    './components/list/list.component.js'
+], function (todoApp,
+    todoConfig,
+    todoStorage,
+    todoBottom,
+    todoForm,
+    todoList) {
+        'use strict';
 
-import todoBottom from './components/bottom/bottom.component';
-import todoForm from './components/form/form.component';
-import todoList from './components/list/list.component';
-
-var ToDoList = angular
-    .module("ToDoList", ['ngRoute'])
-    .config(todoConfig)
-    .service('todoStorage', todoStorage)
-    .component('todoApp', todoApp)
-    .component('todoBottom', todoBottom)
-    .component('todoForm', todoForm)
-    .component('todoList', todoList);
+        return angular
+            .module("ToDoList", ['ngRoute'])
+            .config(todoConfig)
+            .service('todoStorage', todoStorage)
+            .component('todoApp', todoApp)
+            .component('todoBottom', todoBottom)
+            .component('todoForm', todoForm)
+            .component('todoList', todoList);
+    });

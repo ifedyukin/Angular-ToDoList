@@ -1,13 +1,21 @@
-import template from './form.html';
-import controller from './form.controller';
+define(['./form.html'], function (template) {
+    'use strict';
 
-var todoForm = {
-    bindings: {
-        onSubmit: '&',
-        onSearch: '&'
-    },
-    template: template,
-    controller: controller
-};
+    return {
+        bindings: {
+            onSubmit: '&',
+            onSearch: '&'
+        },
+        template: template,
+        controller: function todoFormController() {
+            this.submitHandle = function () {
+                this.onSubmit({ $text: this.addText });
+                this.addText = '';
+            }
 
-export default todoForm;
+            this.searchHandle = function () {
+                this.onSearch({ $text: this.searchText });
+            }
+        }
+    };
+});

@@ -1,41 +1,45 @@
-var todoApp= {
-    template: require('./todo.html'),
-    controller: todoAppController
-};
+define(['./todo.html'], function (template) {
+    'use strict';
 
-function todoAppController(todoStorage, $scope, $routeParams) {
-    var self = this;
-    this.service = todoStorage;
-    this.search = '';
-    this.setFilter($routeParams.filter);
+    var todoApp = {
+        template: template,
+        controller: todoAppController
+    };
 
-    $scope.$watch(function () {
-        return self.service.items
-    },
-        function (newData) {
-            self.leftCount = newData.filter(function (item) {
-                return !item.checked
-            }).length
-        }
-        , true);
-}
+    function todoAppController(todoStorage, $scope, $routeParams) {
+        var self = this;
+        this.service = todoStorage;
+        this.search = '';
+        this.setFilter($routeParams.filter);
 
-todoAppController.prototype.searchItem = function searchItem(text) {
-    this.search = text;
-}
-
-todoAppController.prototype.setFilter = function setFilter(filter) {
-    switch (filter) {
-        case 'active':
-            this.filter = false;
-            break;
-        case 'completed':
-            this.filter = true;
-            break;
-        default:
-            this.filter = '';
-            break;
+        $scope.$watch(function () {
+            return self.service.items
+        },
+            function (newData) {
+                self.leftCount = newData.filter(function (item) {
+                    return !item.checked
+                }).length
+            }
+            , true);
     }
-}
 
-module.exports = todoApp;
+    todoAppController.prototype.searchItem = function searchItem(text) {
+        this.search = text;
+    }
+
+    todoAppController.prototype.setFilter = function setFilter(filter) {
+        switch (filter) {
+            case 'active':
+                this.filter = false;
+                break;
+            case 'completed':
+                this.filter = true;
+                break;
+            default:
+                this.filter = '';
+                break;
+        }
+    }
+
+    return todoApp;
+});
