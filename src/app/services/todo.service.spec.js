@@ -17,22 +17,7 @@ describe('todo service', function () {
         expect(typeof (todoStorage.checkAll)).toBe('function');
     });
 
-    describe('$q promise', function () {
-        var items = [];
-
-        beforeEach(inject(function (_todoStorage_, _$rootScope_) {
-            todoStorage = _todoStorage_;
-            spyOn(todoStorage, 'getLocalStorage').and.returnValue(items);
-            $scope = _$rootScope_;
-        }));
-
-        it('should return items-array', function () {
-            $scope.$apply();
-            expect(todoStorage.items).toEqual(items);
-        });
-    });
-
-    describe('#method addItem()', function () {
+    describe('#addItem()', function () {
 
         beforeEach(function () {
             todoStorage.items = [];
@@ -50,7 +35,7 @@ describe('todo service', function () {
         });
     });
 
-    describe('#method removeItem()', function () {
+    describe('#removeItem()', function () {
         var items = [{ id: '1' }, { id: '2' }];
 
         beforeEach(function () {
@@ -68,7 +53,7 @@ describe('todo service', function () {
         });
     });
 
-    describe('#method toggleItem()', function () {
+    describe('#toggleItem()', function () {
         var items = [{ id: '1', checked: true }, { id: '2', checked: false }];
 
         beforeEach(function () {
@@ -91,7 +76,7 @@ describe('todo service', function () {
         });
     });
 
-    describe('#method removeCompleted()', function () {
+    describe('#removeCompleted()', function () {
         var items = [{ checked: true }, { checked: true }, { checked: false }];
 
         beforeEach(function () {
@@ -105,7 +90,7 @@ describe('todo service', function () {
         });
     });
 
-    describe('#method checkAll()', function () {
+    describe('#checkAll()', function () {
         var items = [{ checked: false }];
 
         beforeEach(function () {

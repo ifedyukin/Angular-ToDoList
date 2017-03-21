@@ -17,7 +17,7 @@ describe('bottom controller', function () {
 
     it('should call the "#onSetFilter" binding', function () {
         var onSetFilter = jasmine.createSpy('onSetFilter');
-        var bindings = { onSetFilter };
+        var bindings = { onSetFilter: onSetFilter };
         var controller = $componentController('todoBottom', null, bindings);
         let filter = 'filter';
         controller.setFilter(filter);
@@ -36,7 +36,7 @@ describe('bottom controller', function () {
 
     it('should call the "#onRemoveCompleted" binding', function () {
         var onRemoveCompleted = jasmine.createSpy('onRemoveCompleted');
-        var bindings = { onRemoveCompleted };
+        var bindings = { onRemoveCompleted: onRemoveCompleted };
         var controller = $componentController('todoBottom', null, bindings);
         controller.removeCompleted();
 
