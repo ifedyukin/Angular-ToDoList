@@ -7,7 +7,7 @@ require('../assets/css/styles.css');
 define([
     './containers/todo/todo.component.js',
     './containers/todo/todo.config',
-    './services/todo.service',
+    './services/todoStorage.service',
     './components/bottom/bottom.component.js',
     './components/form/form.component.js',
     './components/list/list.component.js'

@@ -31,26 +31,13 @@ describe('todo controller', function () {
     describe('#method setFilter()', function () {
         beforeEach(inject(function (_$routeParams_) {
             $routeParams = _$routeParams_;
-            $routeParams.filter = 'test filter';
+            $routeParams.filter = 'completed';
         }));
 
         it('should call the "#setFilter"', function () {
             controller.setFilter($routeParams.filter);
-            expect(controller.filter).toBe('');
+            expect(controller.filter).toBe(true);
         });
     });
 
-    describe('$watch service.items', function () {
-        beforeEach(inject(function (_$rootScope_) {
-            $scope = _$rootScope_;
-        }));
-
-        it('should update "leftCount" via $watch', function () {
-            controller.service.items = [{ checked: true }, { checked: false }];
-            $scope.$digest();
-            controller.service.items = [{ checked: false }, { checked: false }];
-            $scope.$digest();
-            expect(controller.leftCount).toBe(2);
-        });
-    });
 });

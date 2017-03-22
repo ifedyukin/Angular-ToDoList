@@ -4,12 +4,10 @@
     </div>
 
     <div class="btn-group" role="group">
-        <a href="#/" 
-            ng-class="$ctrl.filter === '' ? 'btn btn-primary' : 'btn btn-default'">All</a>
-        <a href="#/active" 
-            ng-class="$ctrl.filter === false ? 'btn btn-primary' : 'btn btn-default'">Active</a>
-        <a href="#/completed"
-            ng-class="$ctrl.filter === true ? 'btn btn-primary' : 'btn btn-default'">Completed</a>
+        <a ng-repeat="filter in $ctrl.filtersLinks track by $index"
+           ng-href="{{filter.link}}"
+           ng-class="filter.active ? 'btn btn-primary' : 'btn btn-default'"
+        >{{filter.value}}</a>
     </div>
 
     <div class="clear_completed">

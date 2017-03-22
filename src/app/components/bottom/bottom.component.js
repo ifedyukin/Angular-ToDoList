@@ -1,27 +1,29 @@
 define(['./bottom.html'], function (template) {
     'use strict';
 
-    return {
+    var bottomComponent = {
         bindings: {
-            leftCount: '=',
-            filter: '=',
+            leftCount: '<',
+            filtersLinks: '<',
             onSetFilter: '&',
             onCheckAll: '&',
             onRemoveCompleted: '&'
         },
         template: template,
-        controller: function todoBottomController() {
-            this.removeCompleted = function () {
-                this.onRemoveCompleted();
-            }
-
-            this.checkAll = function () {
-                this.onCheckAll();
-            }
-
-            this.setFilter = function (filter) {
-                this.onSetFilter({ $filter: filter });
-            }
-        }
+        controller: todoBottomController
     };
+
+    function todoBottomController() {
+        var self = this;
+
+        self.removeCompleted = function () {
+            self.onRemoveCompleted();
+        }
+
+        self.checkAll = function () {
+            self.onCheckAll();
+        }
+    }
+
+    return bottomComponent;
 });

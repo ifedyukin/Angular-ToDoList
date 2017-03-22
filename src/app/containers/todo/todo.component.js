@@ -8,36 +8,45 @@ define(['./todo.html'], function (template) {
 
     function todoAppController(todoStorage, $scope, $routeParams) {
         var self = this;
-        this.service = todoStorage;
-        this.search = '';
-        this.setFilter($routeParams.filter);
 
-        $scope.$watch(function () {
-            return self.service.items
-        },
-            function (newData) {
-                self.leftCount = newData.filter(function (item) {
-                    return !item.checked
-                }).length
+        self.filtersLinks = [
+            { link: '#/', value: 'All' },
+            { link: '#/active', value: 'Active' },
+            { link: '#/completed', value: 'Completed' }
+        ];
+        self.filterValues = {
+            "active": false,
+            "completed": true,
+            "all": ''
+        };
+
+        self.todoStorage = todoStorage;
+
+        self.setFilter = setFilter;
+        self.searchItem = searchItem;
+
+        self.setFilter($routeParams.filter);
+        self.search = '';
+
+        function searchItem(text) {
+            self.search = text;
+        }
+
+        function setFilter(filter) {
+            if (!filter) {
+                filter = 'all';
             }
-            , true);
-    }
 
-    todoAppController.prototype.searchItem = function searchItem(text) {
-        this.search = text;
-    }
+            self.filter = self.filterValues[filter];
 
-    todoAppController.prototype.setFilter = function setFilter(filter) {
-        switch (filter) {
-            case 'active':
-                this.filter = false;
-                break;
-            case 'completed':
-                this.filter = true;
-                break;
-            default:
-                this.filter = '';
-                break;
+            function updateActiveFilter() {
+                self.filtersLinks = self.filtersLinks.map(function (link) {
+                    return link.value.toLowerCase() === filter ?
+                        { link: link.link, value: link.value, active: true } :
+                        { link: link.link, value: link.value, active: false };
+                });
+            }
+            updateActiveFilter();
         }
     }
 

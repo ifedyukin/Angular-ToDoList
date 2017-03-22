@@ -15,16 +15,6 @@ describe('bottom controller', function () {
         expect(controller.filter).toEqual(bindings.filter);
     });
 
-    it('should call the "#onSetFilter" binding', function () {
-        var onSetFilter = jasmine.createSpy('onSetFilter');
-        var bindings = { onSetFilter: onSetFilter };
-        var controller = $componentController('todoBottom', null, bindings);
-        let filter = 'filter';
-        controller.setFilter(filter);
-
-        expect(onSetFilter).toHaveBeenCalledWith({ $filter: filter });
-    });
-
     it('should call the "#onCheckAll" binding', function () {
         var onCheckAll = jasmine.createSpy('onCheckAll');
         var bindings = { onCheckAll };

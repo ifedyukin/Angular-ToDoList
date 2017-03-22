@@ -1,21 +1,27 @@
 define(['./form.html'], function (template) {
     'use strict';
 
-    return {
+    var formComponent = {
         bindings: {
             onSubmit: '&',
             onSearch: '&'
         },
         template: template,
-        controller: function todoFormController() {
-            this.submitHandle = function () {
-                this.onSubmit({ $text: this.addText });
-                this.addText = '';
-            }
-
-            this.searchHandle = function () {
-                this.onSearch({ $text: this.searchText });
-            }
-        }
+        controller: todoFormController
     };
+
+    function todoFormController() {
+        var self = this;
+
+        self.submitHandle = function () {
+            self.onSubmit({ $text: self.addText });
+            self.addText = '';
+        }
+
+        self.searchHandle = function () {
+            self.onSearch({ $text: self.searchText });
+        }
+    }
+
+    return formComponent;
 });
