@@ -1,27 +1,21 @@
-define(['./form.html'], function (template) {
-    'use strict';
+function todoFormController() {
+    var self = this;
 
-    var formComponent = {
-        bindings: {
-            onSubmit: '&',
-            onSearch: '&'
-        },
-        template: template,
-        controller: todoFormController
-    };
-
-    function todoFormController() {
-        var self = this;
-
-        self.submitHandle = function () {
-            self.onSubmit({ $text: self.addText });
-            self.addText = '';
-        }
-
-        self.searchHandle = function () {
-            self.onSearch({ $text: self.searchText });
-        }
+    self.submitHandle = function () {
+        self.onSubmit({ $text: self.addText });
+        self.addText = '';
     }
 
-    return formComponent;
+    self.searchHandle = function () {
+        self.onSearch({ $text: self.searchText });
+    }
+}
+
+angular.module("ToDoList").component('todoForm', {
+    bindings: {
+        onSubmit: '&',
+        onSearch: '&'
+    },
+    template: require('./form.html'),
+    controller: todoFormController
 });

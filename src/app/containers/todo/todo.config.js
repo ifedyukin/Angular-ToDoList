@@ -1,14 +1,10 @@
-define(function () {
-    'use strict';
-
-    return function todoConfig($routeProvider, $locationProvider) {
-        $routeProvider.
-            when('/', {
-                template: '<todo-app>Angular load...</todo-app>'
-            }).
-            when('/:filter', {
-                template: '<todo-app>Angular load...</todo-app>'
-            }).
-            otherwise('/');
-    }
-}); 
+angular.module("ToDoList").config(function todoConfig($routeProvider) {
+    $routeProvider.
+        when('/', {
+            template: '<todo-app>Angular load...</todo-app>'
+        }).
+        when('/:filter', {
+            template: '<todo-app>Angular load...</todo-app>'
+        }).
+        otherwise('/');
+});
