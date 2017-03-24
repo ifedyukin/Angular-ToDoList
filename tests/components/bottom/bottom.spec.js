@@ -11,6 +11,7 @@ describe('bottom controller', function () {
             filter: true
         };
         var controller = $componentController('todoBottom', null, bindings);
+
         expect(controller.leftCount).toEqual(bindings.leftCount);
         expect(controller.filter).toEqual(bindings.filter);
     });
@@ -19,6 +20,7 @@ describe('bottom controller', function () {
         var onCheckAll = jasmine.createSpy('onCheckAll');
         var bindings = { onCheckAll };
         var controller = $componentController('todoBottom', null, bindings);
+
         controller.checkAll();
 
         expect(onCheckAll).toHaveBeenCalled();
@@ -28,6 +30,7 @@ describe('bottom controller', function () {
         var onRemoveCompleted = jasmine.createSpy('onRemoveCompleted');
         var bindings = { onRemoveCompleted: onRemoveCompleted };
         var controller = $componentController('todoBottom', null, bindings);
+        
         controller.removeCompleted();
 
         expect(onRemoveCompleted).toHaveBeenCalled();

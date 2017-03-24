@@ -10,6 +10,7 @@ describe('form controller', function () {
         var bindings = { onSubmit: onSubmit };
         var controller = $componentController('todoForm', null, bindings);
         var addText = 'test submit form';
+
         controller.addText = addText;
         controller.submitHandle();
 
@@ -21,6 +22,7 @@ describe('form controller', function () {
         var onSearch = jasmine.createSpy('onSubmit');
         var bindings = { onSearch: onSearch };
         var controller = $componentController('todoForm', null, bindings);
+        
         controller.searchHandle();
 
         expect(onSearch).toHaveBeenCalled();

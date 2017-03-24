@@ -1,6 +1,6 @@
 define([
     'angular'
-], function () {
+], function (angular) {
     'use strict';
 
     angular.module("ToDoList").config(function todoConfig($routeProvider) {

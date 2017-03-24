@@ -4,13 +4,9 @@ define([
 ], function (angular, shortid) {
     'use strict';
 
-
     angular.module("ToDoList").service("todoStorage", function todoStorage() {
         var self = this;
-
-        self.getLocalItems = getLocalItems;
-        self.saveLocalItems = saveLocalItems;
-
+        
         self.addItem = addItem;
         self.removeItem = removeItem;
         self.toggleItem = toggleItem;
@@ -18,7 +14,7 @@ define([
         self.removeCompleted = removeCompleted;
         self.checkAll = checkAll;
 
-        self.items = self.getLocalItems();
+        self.items = getLocalItems();
         self.leftTodoCount = self.items.filter(function (item) {
             return !item.checked
         }).length;
@@ -44,7 +40,7 @@ define([
             if (text) {
                 self.items = self.items.concat(new Item(text));
 
-                self.saveLocalItems();
+                saveLocalItems();
                 self.leftTodoCount++;
             }
         }
@@ -54,7 +50,7 @@ define([
                 return item.id != id;
             });
 
-            self.saveLocalItems();
+            saveLocalItems();
             self.leftTodoCount--;
         }
 
@@ -68,7 +64,7 @@ define([
                 }
             });
 
-            self.saveLocalItems();
+            saveLocalItems();
         }
 
         function removeCompleted() {
@@ -76,7 +72,7 @@ define([
                 return !item.checked;
             });
 
-            self.saveLocalItems();
+            saveLocalItems();
         }
 
         function checkAll() {
@@ -85,7 +81,7 @@ define([
             });
 
             self.leftTodoCount = 0;
-            self.saveLocalItems();
+            saveLocalItems();
         }
     });
 });

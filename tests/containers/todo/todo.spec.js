@@ -4,7 +4,7 @@ describe('todo controller', function () {
     beforeEach(angular.mock.module('ToDoList'));
 
     beforeEach(inject(function (_$componentController_) {
-        controller = _$componentController_('todoApp', null, null);
+        controller = _$componentController_('todoApp');
     }));
 
     it('should exist', function () {

@@ -14,8 +14,8 @@ describe('list controller', function () {
             filter: filter,
             search: search
         };
-
         var controller = $componentController('todoList', null, bindings);
+
         expect(controller.items).toEqual(bindings.items);
         expect(controller.filter).toEqual(bindings.filter);
         expect(controller.search).toEqual(bindings.search);
@@ -25,6 +25,7 @@ describe('list controller', function () {
         var onToggle = jasmine.createSpy('onSetFilter');
         var bindings = { onToggle: onToggle };
         var controller = $componentController('todoList', null, bindings);
+
         controller.toggleItem(1);
 
         expect(onToggle).toHaveBeenCalledWith({ $id: 1 });
@@ -34,6 +35,7 @@ describe('list controller', function () {
         var onRemove = jasmine.createSpy('onSetFilter');
         var bindings = { onRemove: onRemove };
         var controller = $componentController('todoList', null, bindings);
+        
         controller.removeItem(1);
 
         expect(onRemove).toHaveBeenCalledWith({ $id: 1 });

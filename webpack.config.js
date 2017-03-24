@@ -11,7 +11,7 @@ var isProd = ENV === 'build';
 module.exports = function () {
     var config = {};
     config.plugins = [];
-    config.entry = isTest ? void 0 : 
+    config.entry = isTest ? void 0 :
         glob.sync([
             "./src/app/**/*.js",
             "./src/assets/css/*.css"
@@ -24,14 +24,11 @@ module.exports = function () {
         chunkFilename: isProd ? '[name].[hash].js' : '[name].bundle.js'
     };
 
-    if (isTest) {
-        config.devtool = 'source-map';
-    }
-    else if (isProd) {
+    if (isProd) {
         config.devtool = 'inline-source-map';
     }
-    else {
-        config.devtool = 'eval-source-map';
+    else if (isTest) {
+        config.devtool = 'source-map';
     }
 
     config.module = {
