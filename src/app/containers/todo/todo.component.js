@@ -1,48 +1,55 @@
-function todoAppController(todoStorage, $routeParams) {
-    var self = this;
+define([
+    'angular',
+    './todo.html'
+], function (angular, template) {
+    'use strict';
 
-    self.filtersLinks = [
-        { link: '#/', value: 'All' },
-        { link: '#/active', value: 'Active' },
-        { link: '#/completed', value: 'Completed' }
-    ];
-    self.filterValues = {
-        "active": false,
-        "completed": true,
-        "all": ''
-    };
+    angular.module("ToDoList").component('todoApp', {
+        template: template,
+        controller: todoAppController
+    });
 
-    self.todoStorage = todoStorage;
+    function todoAppController(todoStorage, $routeParams) {
+        var self = this;
 
-    self.setFilter = setFilter;
-    self.searchItem = searchItem;
+        self.filtersLinks = [
+            { link: '#/', value: 'All' },
+            { link: '#/active', value: 'Active' },
+            { link: '#/completed', value: 'Completed' }
+        ];
+        self.filterValues = {
+            "active": false,
+            "completed": true,
+            "all": ''
+        };
 
-    self.setFilter($routeParams.filter);
-    self.search = '';
+        self.todoStorage = todoStorage;
 
-    function searchItem(text) {
-        self.search = text;
-    }
+        self.setFilter = setFilter;
+        self.searchItem = searchItem;
 
-    function setFilter(filter) {
-        if (!filter) {
-            filter = 'all';
+        self.setFilter($routeParams.filter);
+        self.search = '';
+
+        function searchItem(text) {
+            self.search = text;
         }
 
-        self.filter = self.filterValues[filter];
+        function setFilter(filter) {
+            if (!filter) {
+                filter = 'all';
+            }
 
-        function updateActiveFilter() {
-            self.filtersLinks = self.filtersLinks.map(function (link) {
-                return link.value.toLowerCase() === filter ?
-                    { link: link.link, value: link.value, active: true } :
-                    { link: link.link, value: link.value, active: false };
-            });
+            self.filter = self.filterValues[filter];
+
+            function updateActiveFilter() {
+                self.filtersLinks = self.filtersLinks.map(function (link) {
+                    return link.value.toLowerCase() === filter ?
+                        { link: link.link, value: link.value, active: true } :
+                        { link: link.link, value: link.value, active: false };
+                });
+            }
+            updateActiveFilter();
         }
-        updateActiveFilter();
     }
-}
-
-angular.module("ToDoList").component('todoApp', {
-    template: require('./todo.html'),
-    controller: todoAppController
 });

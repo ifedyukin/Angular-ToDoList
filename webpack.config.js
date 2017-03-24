@@ -1,6 +1,7 @@
 'use strict';
 
 var webpack = require('webpack');
+var glob = require("glob-all");
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 
 var ENV = process.env.npm_lifecycle_event;
@@ -10,9 +11,11 @@ var isProd = ENV === 'build';
 module.exports = function () {
     var config = {};
     config.plugins = [];
-    config.entry = isTest ? void 0 : {
-        app: './src/app/index.js'
-    };
+    config.entry = isTest ? void 0 : 
+        glob.sync([
+            "./src/app/**/*.js",
+            "./src/assets/css/*.css"
+        ]);
 
     config.output = isTest ? {} : {
         path: __dirname + '/dist',
@@ -47,11 +50,11 @@ module.exports = function () {
             exclude: /node_modules/,
             include: /assets/
         },
-            {
-                test: /\.html$/,
-                loader: 'raw-loader',
-                include: /app/
-            }]
+        {
+            test: /\.html$/,
+            loader: 'raw-loader',
+            include: /app/
+        }]
     };
 
     if (!isTest) {
