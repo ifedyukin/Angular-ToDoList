@@ -17,7 +17,8 @@ define([
             { link: '#/active', value: 'Active' },
             { link: '#/completed', value: 'Completed' }
         ];
-        self.filterValues = {
+
+        var filterValues = {
             "active": false,
             "completed": true,
             "all": ''
@@ -40,7 +41,7 @@ define([
                 filter = 'all';
             }
 
-            self.filter = self.filterValues[filter];
+            self.filter = filterValues[filter];
 
             function updateActiveFilter() {
                 self.filtersLinks = self.filtersLinks.map(function (link) {

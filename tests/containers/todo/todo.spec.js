@@ -14,7 +14,7 @@ describe('todo controller', function () {
         expect(typeof (controller.filter)).toBeDefined();
     });
 
-    describe('#method searchItem()', function () {
+    describe('#searchItem()', function () {
 
         beforeEach(function () {
             controller.search = '';
@@ -28,7 +28,7 @@ describe('todo controller', function () {
         });
     });
 
-    describe('#method setFilter()', function () {
+    describe('#setFilter()', function () {
         beforeEach(inject(function (_$routeParams_) {
             $routeParams = _$routeParams_;
             $routeParams.filter = 'completed';
