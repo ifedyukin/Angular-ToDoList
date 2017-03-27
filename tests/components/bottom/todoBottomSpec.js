@@ -18,7 +18,7 @@ describe('bottom controller', function () {
 
     it('should call the "#onCheckAll" binding', function () {
         var onCheckAll = jasmine.createSpy('onCheckAll');
-        var bindings = { onCheckAll };
+        var bindings = { onCheckAll: onCheckAll };
         var controller = $componentController('todoBottom', null, bindings);
 
         controller.checkAll();
