@@ -1,5 +1,5 @@
 # Angular-ToDoList (ES 5.1)    
-[![Build Status](https://travis-ci.org/ifedyukin/Angular-ToDoList.svg?branch=master)](https://travis-ci.org/ifedyukin/Angular-ToDoList)    
+[![Build Status](https://travis-ci.org/ifedyukin/Angular-ToDoList.svg?branch=ES_5.1)](https://travis-ci.org/ifedyukin/Angular-ToDoList)    
 
 ### Install
 ```sh
