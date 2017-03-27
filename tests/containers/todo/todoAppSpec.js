@@ -8,7 +8,6 @@ describe('todo controller', function () {
     }));
 
     it('should exist', function () {
-        expect(controller.search).toBe('');
         expect(typeof (controller.searchItem)).toBe('function');
         expect(typeof (controller.setFilter)).toBe('function');
         expect(typeof (controller.filter)).toBeDefined();

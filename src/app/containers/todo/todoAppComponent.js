@@ -12,6 +12,15 @@ define([
     function todoAppController(todoStorage, $routeParams) {
         var self = this;
 
+        self.$onInit = function initComponent() {
+            self.items = todoStorage.getItems();
+
+            self.setFilter($routeParams.filter);
+            self.search = '';
+
+            self.leftTodoCount = getLeftItemsCount();
+        }
+
         self.filtersLinks = [
             { link: '#/', value: 'All' },
             { link: '#/active', value: 'Active' },
@@ -24,13 +33,39 @@ define([
             "all": ''
         };
 
-        self.todoStorage = todoStorage;
-
         self.setFilter = setFilter;
         self.searchItem = searchItem;
 
-        self.setFilter($routeParams.filter);
-        self.search = '';
+        self.addItem = addItem;
+        self.toggleItem = toggleItem;
+        self.removeItem = removeItem;
+        self.removeCompleted = removeCompleted;
+        self.checkAll = checkAll;
+
+        function addItem(text) {
+            self.items = todoStorage.addItem(text);
+            self.leftTodoCount++;
+        }
+
+        function toggleItem(id) {
+            self.items = todoStorage.toggleItem(id);
+            self.leftTodoCount = getLeftItemsCount();
+        }
+
+        function removeItem(id) {
+            self.items = todoStorage.removeItem(id);
+            self.leftTodoCount = getLeftItemsCount();
+        }
+
+        function removeCompleted() {
+            self.items = todoStorage.removeCompleted();
+            self.leftTodoCount = getLeftItemsCount();
+        }
+
+        function checkAll() {
+            self.items = todoStorage.checkAll();
+            self.leftTodoCount = 0;
+        }
 
         function searchItem(text) {
             self.search = text;
@@ -51,6 +86,12 @@ define([
                 });
             }
             updateActiveFilter();
+        }
+
+        function getLeftItemsCount() {
+            return self.items.filter(function (item) {
+                return !item.checked
+            }).length;
         }
     }
 });

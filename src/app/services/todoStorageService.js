@@ -6,26 +6,36 @@ define([
 
     angular.module("ToDoList").service("todoStorage", function todoStorage() {
         var self = this;
-        
+
+        function getLocalItems() {
+            var items = JSON.parse(localStorage.getItem("Items"));
+            return items ? items : [];
+        }
+
+        function setLocalItems(items) {
+            localStorage.setItem("Items", JSON.stringify(items));
+        }
+
         self.addItem = addItem;
         self.removeItem = removeItem;
         self.toggleItem = toggleItem;
 
         self.removeCompleted = removeCompleted;
         self.checkAll = checkAll;
+  
+        self.getItems = getItems;
+        self.setItems = setItems;
 
-        self.items = getLocalItems();
-        self.leftTodoCount = self.items.filter(function (item) {
-            return !item.checked
-        }).length;
+        self.getItems();
 
-        function getLocalItems() {
-            var items = JSON.parse(localStorage.getItem("Items"));
-            return items ? JSON.parse(localStorage.getItem("Items")) : [];
+        function getItems() {
+            self.items = getLocalItems();
+            return self.items;
         }
 
-        function saveLocalItems() {
-            localStorage.setItem("Items", JSON.stringify(self.items));
+        function setItems(items) {
+            setLocalItems(items);
+            return self.items;
         }
 
         function addItem(text) {
@@ -39,10 +49,10 @@ define([
 
             if (text) {
                 self.items = self.items.concat(new Item(text));
-
-                saveLocalItems();
-                self.leftTodoCount++;
+                setItems(self.items);
             }
+
+            return self.items;
         }
 
         function removeItem(id) {
@@ -50,8 +60,8 @@ define([
                 return item.id != id;
             });
 
-            saveLocalItems();
-            self.leftTodoCount--;
+            setItems(self.items);
+            return self.items;
         }
 
         function toggleItem(id) {
@@ -64,7 +74,8 @@ define([
                 }
             });
 
-            saveLocalItems();
+            setItems(self.items);
+            return self.items;
         }
 
         function removeCompleted() {
@@ -72,7 +83,8 @@ define([
                 return !item.checked;
             });
 
-            saveLocalItems();
+            setItems(self.items);
+            return self.items;
         }
 
         function checkAll() {
@@ -80,8 +92,8 @@ define([
                 return item = { id: item.id, text: item.text, checked: true }
             });
 
-            self.leftTodoCount = 0;
-            saveLocalItems();
+            setItems(self.items);
+            return self.items;
         }
     });
 });

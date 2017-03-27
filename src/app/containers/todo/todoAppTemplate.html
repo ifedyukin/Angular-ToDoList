@@ -1,24 +1,24 @@
 <section>
     <h1>ToDo List</h1>
     <todo-form 
-        on-submit="$ctrl.todoStorage.addItem(text)"
+        on-submit="$ctrl.addItem(text)"
         on-search='$ctrl.searchItem(text)'>
     </todo-form>
     <div class="panel panel-default">
         <div class="panel-body">
             <todo-list 
-                on-remove="$ctrl.todoStorage.removeItem(id)"
-                on-toggle="$ctrl.todoStorage.toggleItem(id)"
-                items="$ctrl.todoStorage.items"
+                on-remove="$ctrl.removeItem(id)"
+                on-toggle="$ctrl.toggleItem(id)"
+                items="$ctrl.items"
                 search="$ctrl.search" 
                 filter="$ctrl.filter">
             </todo-list>
         </div>
         <todo-bottom 
-            left-count="$ctrl.todoStorage.leftTodoCount"
+            left-count="$ctrl.leftTodoCount"
             filters-links="$ctrl.filtersLinks"
-            on-remove-completed="$ctrl.todoStorage.removeCompleted()"
-            on-check-all="$ctrl.todoStorage.checkAll()"
+            on-remove-completed="$ctrl.removeCompleted()"
+            on-check-all="$ctrl.checkAll()"
             on-set-filter="$ctrl.setFilter($filter)">
         </todo-bottom>
     </div>
