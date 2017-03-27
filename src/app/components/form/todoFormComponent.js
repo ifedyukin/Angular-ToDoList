@@ -1,6 +1,6 @@
 define([
     'angular',
-    './form.html'
+    './todoFormTemplate.html'
 ], function (angular, template) {
     'use strict';
 
@@ -17,12 +17,12 @@ define([
         var self = this;
 
         self.submitHandle = function () {
-            self.onSubmit({ $text: self.addText });
+            self.onSubmit({ text: self.addText });
             self.addText = '';
         }
 
         self.searchHandle = function () {
-            self.onSearch({ $text: self.searchText });
+            self.onSearch({ text: self.searchText });
         }
     }
 });

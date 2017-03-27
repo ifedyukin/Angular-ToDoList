@@ -1,14 +1,14 @@
 <section>
     <h1>ToDo List</h1>
     <todo-form 
-        on-submit="$ctrl.todoStorage.addItem($text)"
-        on-search='$ctrl.searchItem($text)'>
+        on-submit="$ctrl.todoStorage.addItem(text)"
+        on-search='$ctrl.searchItem(text)'>
     </todo-form>
     <div class="panel panel-default">
         <div class="panel-body">
             <todo-list 
-                on-remove="$ctrl.todoStorage.removeItem($id)"
-                on-toggle="$ctrl.todoStorage.toggleItem($id)"
+                on-remove="$ctrl.todoStorage.removeItem(id)"
+                on-toggle="$ctrl.todoStorage.toggleItem(id)"
                 items="$ctrl.todoStorage.items"
                 search="$ctrl.search" 
                 filter="$ctrl.filter">

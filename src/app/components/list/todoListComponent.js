@@ -1,6 +1,6 @@
 define([
     'angular',
-    './list.html'
+    './todoListTemplate.html'
 ], function (angular, template) {
     'use strict';
 
@@ -12,7 +12,7 @@ define([
             filter: '<',
             search: '<'
         },
-        template: require('./list.html'),
+        template: template,
         controller: todoListController
     });
 
@@ -20,11 +20,11 @@ define([
         var self = this;
 
         self.removeItem = function (id) {
-            self.onRemove({ $id: id });
+            self.onRemove({ id: id });
         }
 
         self.toggleItem = function (id) {
-            self.onToggle({ $id: id });
+            self.onToggle({ id: id });
         }
     }
 });

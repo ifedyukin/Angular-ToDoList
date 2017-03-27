@@ -1,6 +1,6 @@
 define([
     'angular',
-    './todo.html'
+    './todoAppTemplate.html'
 ], function (angular, template) {
     'use strict';
 

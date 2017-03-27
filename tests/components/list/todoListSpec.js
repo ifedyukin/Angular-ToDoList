@@ -28,7 +28,7 @@ describe('list controller', function () {
 
         controller.toggleItem(1);
 
-        expect(onToggle).toHaveBeenCalledWith({ $id: 1 });
+        expect(onToggle).toHaveBeenCalledWith({ id: 1 });
     });
 
     it('should call the "#onRemove" binding', function () {
@@ -38,7 +38,7 @@ describe('list controller', function () {
         
         controller.removeItem(1);
 
-        expect(onRemove).toHaveBeenCalledWith({ $id: 1 });
+        expect(onRemove).toHaveBeenCalledWith({ id: 1 });
     });
 
 });

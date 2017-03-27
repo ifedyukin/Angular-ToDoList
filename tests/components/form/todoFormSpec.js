@@ -14,7 +14,7 @@ describe('form controller', function () {
         controller.addText = addText;
         controller.submitHandle();
 
-        expect(onSubmit).toHaveBeenCalledWith({ $text: addText });
+        expect(onSubmit).toHaveBeenCalledWith({ text: addText });
         expect(controller.addText).toBe('');
     });
 
