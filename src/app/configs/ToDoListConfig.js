@@ -3,7 +3,7 @@ define([
 ], function (angular) {
     'use strict';
 
-    angular.module("ToDoList").config(function todoConfig($routeProvider) {
+    angular.module('ToDoList').config(function todoConfig($routeProvider) {
         $routeProvider.
             when('/', {
                 template: '<todo-app>Angular load...</todo-app>'

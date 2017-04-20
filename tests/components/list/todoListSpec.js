@@ -23,22 +23,21 @@ describe('list controller', function () {
 
     it('should call the "#onToggle" binding', function () {
         var onToggle = jasmine.createSpy('onSetFilter');
-        var bindings = { onToggle: onToggle };
+        var bindings = {onToggle: onToggle};
         var controller = $componentController('todoList', null, bindings);
 
         controller.toggleItem(1);
 
-        expect(onToggle).toHaveBeenCalledWith({ id: 1 });
+        expect(onToggle).toHaveBeenCalledWith({id: 1});
     });
 
     it('should call the "#onRemove" binding', function () {
         var onRemove = jasmine.createSpy('onSetFilter');
-        var bindings = { onRemove: onRemove };
+        var bindings = {onRemove: onRemove};
         var controller = $componentController('todoList', null, bindings);
-        
+
         controller.removeItem(1);
 
-        expect(onRemove).toHaveBeenCalledWith({ id: 1 });
+        expect(onRemove).toHaveBeenCalledWith({id: 1});
     });
-
 });

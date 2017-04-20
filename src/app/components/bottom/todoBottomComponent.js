@@ -4,7 +4,7 @@ define([
 ], function (angular, template) {
     'use strict';
 
-    angular.module("ToDoList").component('todoBottom', {
+    angular.module('ToDoList').component('todoBottom', {
         bindings: {
             leftCount: '<',
             filtersLinks: '<',
@@ -21,10 +21,10 @@ define([
 
         self.removeCompleted = function () {
             self.onRemoveCompleted();
-        }
+        };
 
         self.checkAll = function () {
             self.onCheckAll();
-        }
+        };
     }
 });

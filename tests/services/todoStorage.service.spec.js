@@ -24,9 +24,9 @@ describe('todo service', function () {
         });
 
         it('should add new item', function () {
-            todoStorage.addItem("Test item");
+            todoStorage.addItem('Test item');
             expect(todoStorage.items[0].checked).toBe(false);
-            expect(todoStorage.items[0].text).toBe("Test item");
+            expect(todoStorage.items[0].text).toBe('Test item');
         });
 
         it('should add empty item', function () {
@@ -36,7 +36,7 @@ describe('todo service', function () {
     });
 
     describe('#removeItem()', function () {
-        var items = [{ id: '1' }, { id: '2' }];
+        var items = [{id: '1'}, {id: '2'}];
 
         beforeEach(function () {
             todoStorage.items = items;
@@ -54,7 +54,7 @@ describe('todo service', function () {
     });
 
     describe('#toggleItem()', function () {
-        var items = [{ id: '1', checked: true }, { id: '2', checked: false }];
+        var items = [{id: '1', checked: true}, {id: '2', checked: false}];
 
         beforeEach(function () {
             todoStorage.items = items;
@@ -77,7 +77,7 @@ describe('todo service', function () {
     });
 
     describe('#removeCompleted()', function () {
-        var items = [{ checked: true }, { checked: true }, { checked: false }];
+        var items = [{checked: true}, {checked: true}, {checked: false}];
 
         beforeEach(function () {
             todoStorage.items = items;
@@ -91,7 +91,7 @@ describe('todo service', function () {
     });
 
     describe('#checkAll()', function () {
-        var items = [{ checked: false }];
+        var items = [{checked: false}];
 
         beforeEach(function () {
             todoStorage.items = items;

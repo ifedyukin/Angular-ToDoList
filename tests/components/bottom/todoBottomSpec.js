@@ -18,7 +18,7 @@ describe('bottom controller', function () {
 
     it('should call the "#onCheckAll" binding', function () {
         var onCheckAll = jasmine.createSpy('onCheckAll');
-        var bindings = { onCheckAll: onCheckAll };
+        var bindings = {onCheckAll: onCheckAll};
         var controller = $componentController('todoBottom', null, bindings);
 
         controller.checkAll();
@@ -28,12 +28,11 @@ describe('bottom controller', function () {
 
     it('should call the "#onRemoveCompleted" binding', function () {
         var onRemoveCompleted = jasmine.createSpy('onRemoveCompleted');
-        var bindings = { onRemoveCompleted: onRemoveCompleted };
+        var bindings = {onRemoveCompleted: onRemoveCompleted};
         var controller = $componentController('todoBottom', null, bindings);
-        
+
         controller.removeCompleted();
 
         expect(onRemoveCompleted).toHaveBeenCalled();
     });
-
 });

@@ -4,7 +4,7 @@ define([
 ], function (angular, template) {
     'use strict';
 
-    angular.module("ToDoList").component('todoForm', {
+    angular.module('ToDoList').component('todoForm', {
         bindings: {
             onSubmit: '&',
             onSearch: '&'
@@ -17,12 +17,12 @@ define([
         var self = this;
 
         self.submitHandle = function () {
-            self.onSubmit({ text: self.addText });
+            self.onSubmit({text: self.addText});
             self.addText = '';
-        }
+        };
 
         self.searchHandle = function () {
-            self.onSearch({ text: self.searchText });
-        }
+            self.onSearch({text: self.searchText});
+        };
     }
 });

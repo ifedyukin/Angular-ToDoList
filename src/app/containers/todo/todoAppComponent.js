@@ -4,7 +4,7 @@ define([
 ], function (angular, template) {
     'use strict';
 
-    angular.module("ToDoList").component('todoApp', {
+    angular.module('ToDoList').component('todoApp', {
         template: template,
         controller: todoAppController
     });
@@ -19,18 +19,18 @@ define([
             self.search = '';
 
             self.leftTodoCount = getLeftItemsCount();
-        }
+        };
 
         self.filtersLinks = [
-            { link: '#/', value: 'All' },
-            { link: '#/active', value: 'Active' },
-            { link: '#/completed', value: 'Completed' }
+            {link: '#/', value: 'All'},
+            {link: '#/active', value: 'Active'},
+            {link: '#/completed', value: 'Completed'}
         ];
 
         var filterValues = {
-            "active": false,
-            "completed": true,
-            "all": ''
+            'active': false,
+            'completed': true,
+            'all': ''
         };
 
         self.setFilter = setFilter;
@@ -81,8 +81,8 @@ define([
             function updateActiveFilter() {
                 self.filtersLinks = self.filtersLinks.map(function (link) {
                     return link.value.toLowerCase() === filter ?
-                        { link: link.link, value: link.value, active: true } :
-                        { link: link.link, value: link.value, active: false };
+                        {link: link.link, value: link.value, active: true} :
+                        {link: link.link, value: link.value, active: false};
                 });
             }
             updateActiveFilter();
@@ -90,7 +90,7 @@ define([
 
         function getLeftItemsCount() {
             return self.items.filter(function (item) {
-                return !item.checked
+                return !item.checked;
             }).length;
         }
     }

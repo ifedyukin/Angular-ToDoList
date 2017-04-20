@@ -38,5 +38,4 @@ describe('todo controller', function () {
             expect(controller.filter).toBe(true);
         });
     });
-
 });
