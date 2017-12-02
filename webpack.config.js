@@ -19,7 +19,7 @@ module.exports = function () {
 
     config.output = isTest ? {} : {
         path: __dirname + '/dist',
-        publicPath: isProd ? '/' : 'http://localhost:8080/',
+        publicPath: isProd ? '/' : 'http://localhost:3000/',
         filename: isProd ? '[name].[hash].js' : '[name].bundle.js',
         chunkFilename: isProd ? '[name].[hash].js' : '[name].bundle.js'
     };
@@ -72,7 +72,8 @@ module.exports = function () {
 
     config.devServer = {
         contentBase: './src/assets',
-        stats: 'minimal'
+        stats: 'minimal',
+        port: 3000
     };
 
     return config;
